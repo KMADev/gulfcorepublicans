@@ -114,10 +114,14 @@ span.edit-link {
 }
 .copyright,
 .siteby {
-	color:rgba(0,0,0,.8);
+	color:rgba(255,255,255,.8);
 	font-size:.8rem;
 	margin:0;
 	padding:.5rem 0;
+}
+
+.siteby a {
+	color:rgba(255,255,255,.8);
 }
 .social {
 	position: relative;
