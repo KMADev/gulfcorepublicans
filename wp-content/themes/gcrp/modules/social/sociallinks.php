@@ -1,11 +1,11 @@
 <?php
-/*
-Plugin Name: Social Media Plugin by KMA
-Description: App for managing your social media links for use with KMA sites.
-Version: 1.0.0
-Author: Bryan Baird
-Author URI: https//keriganmarketing.com
-*/
+/**
+ * Social Links Options Page
+ * @package kmaevent
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class SocialSettingsPage {
 	/**
@@ -384,8 +384,8 @@ function getSocialLinks( $format = 'svg', $shape = 'square' ){
     if(is_array($supportedPlatforms)) {
 	    foreach ( $supportedPlatforms as $plat => $platLink ) {
 		    if ( $platLink != '' ) {
-			    $iconUrl = get_template_directory_uri() . '/modules/social/icons/'.$format.'/'.$shape.'/'.$plat.'.svg';
-			    $iconData = file_get_contents($iconUrl);
+			    $iconUrl = get_template_directory() . '/modules/social/icons/'.$format.'/'.$shape.'/'.$plat.'.svg';
+			    $iconData = file_get_contents(wp_normalize_path( $iconUrl));
 			    $socialArray[ $plat ][0] = $platLink;
 			    $socialArray[ $plat ][1] = $iconData;
 		    }

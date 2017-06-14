@@ -9,7 +9,9 @@ class Custom_Post_Type {
     public $post_type_labels;
 	public $columns;
 	public $custom_populate_columns;
-	
+	public $filters;
+    public $taxonomies;
+
     public function __construct( $name, $args = array(), $labels = array() ){
 		
         // Set some important variables
@@ -270,11 +272,12 @@ class Custom_Post_Type {
 
 			add_action( 'admin_init',
 					   
-				function() use( $box_id, $box_title, $post_type_name, $box_context, $box_priority, $fields ){
-					add_meta_box(
+				function() use( $box_id, $box_title, $post_type_name, $box_context, $box_priority, $fields ){  //(isset($filters) ? $filters : null)
+                    add_meta_box(
 						$box_id,
 						$box_title,
-						function( $post, $data ){
+						function( $post, $data){
+                            $data = (isset($data) ? $data : null);
 							global $post;
 
 							// Nonce field for some validation
@@ -293,11 +296,19 @@ class Custom_Post_Type {
 								foreach( $custom_fields as $label => $type ){
 									$field_id_name  = strtolower( str_replace( ' ', '_', $data['id'] ) ) . '_' . strtolower( str_replace( ' ', '_', $label ) );
 									if($type == 'preview'){
-										echo '<tr><td colspan="2">' . $meta[$field_id_name][0] . '</td></tr>';
+										$value   = (isset($_POST[$field_id_name][0]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
+										echo '<tr><td colspan="2">' . $value . '</td></tr>';
 									}elseif($type == 'text'){
+										$value   = (isset($_POST[$field_id_name][0]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
 										echo '<tr>
-									   <td width="20%" align="right" valign="top"><label for="' . $field_id_name . '">' . $label . '</label></td><td width="80%" valign="top"><input style="width:100%;" class="form-control" type="text" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . htmlentities($meta[$field_id_name][0]) . '" /></td></tr>';
+									   <td width="20%" align="right" valign="top"><label for="' . $field_id_name . '">' . $label . '</label></td><td width="80%" valign="top"><input style="width:100%;" class="form-control" type="text" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . htmlentities( $value ) . '" /></td></tr>';
 									}elseif($type == 'image'){
+
+									    //echo '<pre>',print_r($meta[$field_id_name]),'</pre>';
+
+									    $photourl   = (isset($_POST[$field_id_name]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
+                                        $name       = (isset($field_id_name) ? $field_id_name : 'image');
+                                        $label      = (isset($label) ? $label : 'Photo');
 
 										wp_enqueue_script('media-upload');
 										wp_enqueue_script('thickbox');
@@ -306,12 +317,14 @@ class Custom_Post_Type {
 										wp_enqueue_script( 'meta-box-image' );
 
 										echo '<tr>
-									    <td width="20%" align="right" valign="top"><label for="' . $field_id_name . '">' . $label . '</label></td><td>';
+									    <td width="20%" align="right" valign="top"><label for="' . $name . '">' . $label . '</label></td><td>';
 										?>
-										<input type="text" name="custom_meta[<?php echo $field_id_name; ?>]" id="input-<?php echo $field_id_name; ?>" value="<?php echo $meta[$field_id_name][0]; ?>" style="width: 70%;" />
-										<input type="button" id="button-<?php echo $field_id_name; ?>" class="button" value="<?php _e( 'Choose or Upload an Image', 'prfx-textdomain' )?>" />
-										<div id="preview-box" style="padding:5px 0;"><img id="preview-<?php echo $field_id_name; ?>" src="<?php echo $meta[$field_id_name][0]; ?>" style="max-width: 100%;"></div>
-										<script>
+										<input type="text" name="custom_meta[<?php echo $name; ?>]" id="input-<?php echo $name; ?>" value="<?php echo $photourl; ?>" style="width: 70%;" />
+										<input type="button" id="button-<?php echo $name; ?>" class="button" value="<?php _e( 'Choose or Upload an Image', 'prfx-textdomain' )?>" />
+                                        <?php if($photourl != '') { ?>
+										<div id="preview-box" style="padding:5px 0;"><img id="preview-<?php echo $name; ?>" src="<?php echo $photourl; ?>" style="max-width: 100%;"></div>
+										<?php } ?>
+                                        <script>
                                             jQuery(document).ready(function($){
 
                                                 // Instantiates the variable that holds the media library frame.
@@ -319,7 +332,7 @@ class Custom_Post_Type {
                                                 var meta_image;
 
                                                 // Runs when the image button is clicked.
-                                                $('#button-<?php echo $field_id_name; ?>').click(function(e){
+                                                $('#button-<?php echo $name; ?>').click(function(e){
 
                                                     // Prevents the default action from occuring.
                                                     e.preventDefault();
@@ -344,8 +357,10 @@ class Custom_Post_Type {
                                                         var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
 
                                                         // Sends the attachment URL to our custom image input field.
-                                                        $('#input-<?php echo $field_id_name; ?>').val(media_attachment.url);
-                                                        $('#preview-<?php echo $field_id_name; ?>').attr("src", media_attachment.url);
+                                                        if(media_attachment != '') {
+                                                            $('#input-<?php echo $name; ?>').val(media_attachment.url);
+                                                            $('#preview-<?php echo $name; ?>').attr("src", media_attachment.url);
+                                                        }
                                                     });
 
                                                     // Opens the media library frame.
@@ -357,26 +372,30 @@ class Custom_Post_Type {
 										echo '</td></tr>';
 
 									}elseif($type == 'file'){
+										$value   = (isset($_POST[$field_id_name][0]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
 										echo '<tr>
-									   <td width="20%" align="right" valign="top"><label for="' . $field_id_name . '">' . $label . '</label></td><td width="80%" valign="top"><input class="form-control" type="file" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />';
-										if($meta[$field_id_name][0] != ''){ echo '<a href="' . $meta[$field_id_name][0] . '" target="_blank" class="button" >View/download current file</a>'; } //$meta[$field_id_name][0]
+									   <td width="20%" align="right" valign="top"><label for="' . $field_id_name . '">' . $label . '</label></td><td width="80%" valign="top"><input class="form-control" type="file" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $value . '" />';
+										if($value != ''){ echo '<a href="' . $value . '" target="_blank" class="button" >View/download current file</a>'; } //$meta[$field_id_name][0]
 										echo '</td></tr>';
 									}elseif($type == 'date'){
 										echo '<tr>
 									   <td width="20%" align="right" valign="top"><label for="' . $field_id_name . '">' . $label . '</label></td><td width="80%" valign="top"><input class="form-control dateselect" type="date" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" /></td></tr>';
 									}elseif($type == 'boolean'){
+										$value   = (isset($_POST[$field_id_name][0]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
 										echo '<tr>
 									    <td width="20%" align="right" valign="top"><input type="checkbox" class="form-control" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '"';
-										if($meta[$field_id_name][0]==TRUE){ echo ' checked '; }
+										if($value==TRUE){ echo ' checked '; }
 										echo '></td><td width="80%" valign="top">' . $label . '</td></tr>';
 									}elseif($type == 'longtext'){
+										$value   = (isset($_POST[$field_id_name][0]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
 										echo '<tr>
 									    <td width="20%" align="right" valign="top" ><label for="' . $field_id_name . '">' . $label . '</label></td>
-									    <td width="80%" valign="top" ><textarea rows="4" class="form-control" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" style="width:100%;" >' . htmlentities($meta[$field_id_name][0]) . '</textarea></td></tr>';
+									    <td width="80%" valign="top" ><textarea rows="4" class="form-control" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" style="width:100%;" >' . htmlentities($value) . '</textarea></td></tr>';
 									}elseif($type == 'wysiwyg'){
+										$value   = (isset($_POST[$field_id_name][0]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
 										echo '<tr>
-									    <td width="100%" valign="top" >'.
-										     wp_editor( $meta[$field_id_name][0], $field_id_name,
+									    <td valign="top" style="width:100%;">'.
+										     wp_editor( $value, $field_id_name,
 											     array(
 												     'quicktags'     => array( 'buttons' => 'em,strong,link' ),
 												     'textarea_name' => 'custom_meta[' . $field_id_name . ']',
@@ -386,16 +405,18 @@ class Custom_Post_Type {
 										     ).'</td></tr>';
 									}elseif($type == 'locked'){
 										// No Meta box info since editing will be locked.
-										echo '<tr><td style="width:20%; border-bottom:1px solid #eee; padding:5px 2px">' . $label . '</td><td style="border-bottom:1px solid #eee; padding:5px 2px">' . $meta[$field_id_name][0] . '</td></tr>';
+										$value   = (isset($_POST[$field_id_name][0]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
+										echo '<tr><td style="width:20%; border-bottom:1px solid #eee; padding:5px 2px">' . $label . '</td><td style="border-bottom:1px solid #eee; padding:5px 2px">' . $value . '</td></tr>';
 									}elseif($type == 'embed'){
+										$value   = (isset($_POST[$field_id_name][0]) ? $_POST[$field_id_name][0] : (isset($meta[$field_id_name][0]) ? $meta[$field_id_name][0] : '') );
 										echo '<tr>
 									   <td width="20%" align="right" valign="top" ><label for="' . $field_id_name . '">' . $label . '</label></td><td width="50%" valign="top"><textarea rows="4" class="form-control" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" style="width:100%;" ';
-										if($meta[$field_id_name][0]!=''){ echo ' readonly '; }
+										if($value!=''){ echo ' readonly '; }
 										echo '>' . htmlentities($meta[$field_id_name][0]) . '</textarea>';
-										if($meta[$field_id_name][0]!=''){
+										if($value!=''){
 											echo ' <a style="display:inline-block; padding:5px 10px; text-decoration:none; cursor:pointer; background-color:#eaeaea; border-radius:5px; border:1px solid #ddd;" onclick="document.getElementById(\'' . $field_id_name . '\').readOnly=false" >Edit embed code</a> ';
 										}
-										echo '</td><td width="30%" valign="top">' . htmlentities($meta[$field_id_name][0]) .'</td></tr>';
+										echo '</td><td width="30%" valign="top">' . htmlentities($value) .'</td></tr>';
 									}
 								}
 								echo '</table>';
@@ -551,7 +572,8 @@ class Custom_Post_Type {
      * @param array $filters An array of taxonomy filters to display.
      */
     function filters( $filters = array() ) {
-        $this->filters = $filters;
+        //$this->filters = (isset($filters) ? $filters : null);
+        $this->set($filters, (isset($filters) ? $filters : null));
     }
     /**
      *  Add taxtonomy filters
@@ -690,7 +712,7 @@ class Custom_Post_Type {
 						// Loop through all fields
 						foreach( $fields as $label => $type ){
                             $field_id_name = strtolower( str_replace( ' ', '_', $title ) ) . '_' . strtolower( str_replace( ' ', '_', $label ) );
-                            update_post_meta( $post->ID, $field_id_name, $_POST['custom_meta'][ $field_id_name ] );
+                            update_post_meta( $post->ID, $field_id_name, (isset($_POST['custom_meta'][ $field_id_name ]) ? $_POST['custom_meta'][ $field_id_name ] : null) );
 						}
 					}
 				}

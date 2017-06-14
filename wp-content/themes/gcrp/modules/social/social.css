@@ -1,8 +1,30 @@
-.team-gallery .image-container {
-    border: 1px solid #dedede;
+.social svg {
+    height: 40px;
+    display: inline-block;
+    margin: .25rem .25rem .1rem;
+}
+.social {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    margin-bottom: -3px;
+    padding: .25rem;
+}
+.social a {
+    font-size: 0;
+    line-height: 0;
 }
 
-.team-gallery .info {
-    text-align: center;
-    padding: .5rem 0 1.5rem;
+#top-top .social svg {
+    height: 28px;
+    display: inline-block;
+    margin: .25rem;
 }
+#top .social svg {
+    height: 33px;
+    display: inline-block;
+    margin: 0 .25rem;
+}
+
+
+

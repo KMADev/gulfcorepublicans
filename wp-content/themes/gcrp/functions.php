@@ -27,7 +27,10 @@ function gcrp_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'gcrp' ),
+		'main-menu' => esc_html__( 'Primary Menu', 'gcrp' ),
+		'footer-menu' => esc_html__( 'Footer Menu', 'gcrp' ),
+		'mini-menu' => esc_html__( 'Mini Menu', 'gcrp' ),
+		'mobile-menu' => esc_html__( 'Mobile Menu', 'gcrp' ),
 	) );
 
 	add_theme_support( 'html5', array(

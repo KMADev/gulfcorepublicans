@@ -1,8 +1,7 @@
 /* Above the fold stuff goes here */
 
 /* Structure */
-#top, #mast { height: 200px; }
-html, body.full, body.full #page, body.home.full #top, body.home.full #mast { height:100%; }
+html, body.full, body.full #page { height:100%; }
 
 
 /*.home #top, .home #mast { max-height: 800px; }*/
@@ -20,51 +19,13 @@ html, body.full, body.full #page, body.home.full #top, body.home.full #mast { he
     }
 }
 
-/* Animations */
-.fadein {
-    visibility: hidden;
-    -moz-transition: visibility ease-out 1s;
-    -webkit-transition: visibility ease-out 1s;
-    transition: visibility ease-out 1s;
-}
-* .animate {
-    -moz-transition: all ease-out 1s;
-    -webkit-transition: all ease-out 1s;
-    transition: all ease-out 1s;
-}
-.fadein {
-    visibility: visible;
-}
-
-/* top nav */
-#top-top {
-    background-color: #1d1d1d;
-    width:100%;
-    position: fixed;
-    height:40px;
-    z-index: 999;
-}
-.navbar-brand{
-    padding:0;
-    font-size: 1.8em;
-    margin: 0;
-    line-height: 1.8em;
-}
 #top header { /* sticky nav */
-    top:40px;
-    position: fixed;
     width: 100%;
     z-index: 4;
-    background: rgba(255,255,255,.6);
-    background-size: cover;
+    background: #FFF;
     padding: 1.5rem .5rem;
 }
 
-#top.smaller header {
-    padding: .5rem .5rem;
-    background: rgba(255,255,255,1);
-    border-bottom:1px solid #dedede;
-}
 #top .navbar-toggler {
     border: 0px none;
     color: rgb(255, 255, 255);
@@ -75,39 +36,15 @@ html, body.full, body.full #page, body.home.full #top, body.home.full #mast { he
     outline: medium none;
 }
 
-.menu ul {
-    list-style: outside none none;
-    width: 100%;
-    text-align: center;
-    margin: 0px;
-    padding: 2em 0;
+ul.navbar-nav {
+    display: block;
+    width:100%;
 }
 
-@media screen and (min-width: 768px){
-
-    #top .menu ul {
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
-        text-align: right;
-    }
-
-    .menu ul li.menu-item {
-        display: inline-block;
-        padding: 0 .5rem;
-    }
-
-    #top .nav-social {
-        margin-top: 30px;
-    }
-
-}
 ul li.menu-item a.nav-link {
-    display:block;
     padding:.25rem 1rem;
     color:rgba(0,0,0,.95);
     text-transform: uppercase;
-    text-align: center;
 }
 
 ul li.current-page-ancestor a,
@@ -116,18 +53,13 @@ ul li.menu-item a:hover {
     text-decoration: none;
     color:cornflowerblue;
 }
-ul li.menu-item.nav-social {
-    margin-top: 35px;
+
+@media screen and (min-width:768px) {
+    .menu-item {
+        display: inline-block;
+    }
 }
 
-@media screen and (min-width: 768px){
-    #top ul li.menu-item a {
-        text-align: right;
-    }
-    #top ul li.menu-item.nav-social {
-        margin-top: 0px;
-    }
-}
 .navbar-toggler:focus .icon-bar,
 .navbar-toggler .icon-bar {
     display: block;
@@ -194,7 +126,6 @@ ul li.menu-item.nav-social {
     background-color: #000
 }
 
-
 .navbar-collapse,
 .collapse {
     display: none;
@@ -203,12 +134,12 @@ ul li.menu-item.nav-social {
 .collapsing,
 .collapse.show {
     display: block;
-    position: absolute;
+    position: relative;
     left:0;
     right:0;
     top: inherit;
     margin:0 -10px;
-    background-color: rgba(0,0,0,.9);
+    background-color: #04417C;
     padding:1.5rem 0 2rem;
 }
 .collapsing ul li.menu-item a.nav-link,
@@ -257,6 +188,11 @@ ul li.menu-item.nav-social {
     .jumbotron h1 {
         font-size:4.5em;
     }
+}
+
+/* mini header */
+#mini-menu a.nav-link {
+    font-size: .9em;
 }
 
 
