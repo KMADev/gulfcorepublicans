@@ -1,0 +1,8 @@
+{
+    "name": "daron/gcrp",
+    "description": "Gulf County Republicans",
+    "require": {
+        "facebook/graph-sdk": "^5.5",
+        "guzzlehttp/guzzle": "5.*"
+    }
+}
