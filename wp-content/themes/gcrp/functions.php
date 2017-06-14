@@ -8,7 +8,7 @@
  */
 
 //require('inc/vendor/autoload.php');
-//require('inc/session.php');
+require('inc/session.php');
 
 if ( ! function_exists( 'gcrp_setup' ) ) :
 /**

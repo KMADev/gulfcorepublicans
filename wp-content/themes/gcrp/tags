@@ -37,6 +37,8 @@ a	modules/testimonials/testimonials.php	/^	$a = shortcode_atts( array($/;"	v
 aa	modules/leads/leads.php	/^        $aa = substr( $post_date, 0, 4 );$/;"	v
 accepts	inc/cpt.php	/^     * @param  int     $accepted_args    The number of arguements the function accepts.$/;"	f
 accepts	inc/cpt.php	/^     * @param integer $accepted_args The number of arguments the function accepts.$/;"	f
+accessToken	page-callback.php	/^        $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);$/;"	v
+accessToken	page-callback.php	/^    $accessToken = $helper->getAccessToken();$/;"	v
 addEvent	modules/events/events.js	/^function addEvent ( event_id, event_title, event_start, event_end, event_url ){$/;"	f
 addEventsToCal	modules/events/events.php	/^		    function addEventsToCal(){$/;"	f
 add_action	inc/cpt.php	/^    function add_action( $action, $function, $priority = 10, $accepted_args = 1 ) {$/;"	f
@@ -184,6 +186,8 @@ events	modules/events/events.php	/^	$events = get_posts( $request );$/;"	v
 events	modules/events/events.php	/^$events = new Custom_Post_Type($/;"	v
 facebook_callback	modules/social/sociallinks.php	/^	public function facebook_callback(){$/;"	f
 fallback	inc/bootstrap-wp-navwalker.php	/^	public static function fallback( $args ) {$/;"	f
+fb	page-callback.php	/^$fb = new Facebook\\Facebook([$/;"	v
+fb	page-test.php	/^$fb = new Facebook\\Facebook([$/;"	v
 fb_output	inc/bootstrap-wp-navwalker.php	/^				$fb_output = '<' . $container;$/;"	v
 fb_output	inc/bootstrap-wp-navwalker.php	/^			$fb_output = null;$/;"	v
 featured	modules/testimonials/testimonials.php	/^		$featured = get_post_meta($testimonial_id,author_info_featured, true);$/;"	v
@@ -235,6 +239,8 @@ guid	modules/leads/leads.php	/^            $guid = get_post_field( 'guid', $post
 guid	modules/leads/leads.php	/^        $guid = $postarr['guid'];$/;"	v
 header_text_color	inc/custom-header.php	/^	$header_text_color = get_header_textcolor();$/;"	v
 headers	modules/leads/leads.php	/^        $headers = 'From: ' . $sendadmin['from'] . $eol;$/;"	v
+helper	page-callback.php	/^$helper = $fb->getRedirectLoginHelper();$/;"	v
+helper	page-test.php	/^$helper = $fb->getRedirectLoginHelper();$/;"	v
 hooked	inc/cpt.php	/^     * @param  int     $priority         Order in which to execute the function, relation to other function hooked to this action.$/;"	f
 host	inc/minifier.php	/^$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : "");$/;"	v
 http_request	inc/honeypot.php	/^        $http_request  = "POST " . $path . " HTTP\/1.0\\r\\n";$/;"	v
@@ -284,6 +290,7 @@ link	modules/events/events.php	/^	    $link = get_permalink($eventid);$/;"	v
 link	modules/photogallery/photogallery.php	/^		$link = get_permalink($photoid);$/;"	v
 linkedin_callback	modules/social/sociallinks.php	/^	public function linkedin_callback(){$/;"	f
 linkedinlink	modules/team/team.php	/^		$linkedinlink = get_post_meta($member_id,'member_info_linkedin_link', true);$/;"	v
+loginUrl	page-test.php	/^$loginUrl = $helper->getLoginUrl('http:\/\/gulfcorepublicans.dev\/callback\/', $permissions);$/;"	v
 make_columns_sortable	inc/cpt.php	/^    function make_columns_sortable( $columns ) {$/;"	f
 maybe_empty	modules/leads/leads.php	/^        $maybe_empty = 'attachment' !== $post_type$/;"	v
 mccall_theme_add_editor_styles	inc/editor.php	/^function mccall_theme_add_editor_styles() {$/;"	f
@@ -311,6 +318,7 @@ name	modules/team/team.php	/^		$name = $member->post_title;$/;"	v
 new_columns	inc/cpt.php	/^            $new_columns = array();$/;"	v
 new_input	modules/social/sociallinks.php	/^		$new_input = array();$/;"	v
 now	modules/leads/leads.php	/^                $now = gmdate('Y-m-d H:i:59');$/;"	v
+oAuth2Client	page-callback.php	/^$oAuth2Client = $fb->getOAuth2Client();$/;"	v
 of	inc/extras.php	/^	\/\/ Adds a class of group-blog to blogs with more than 1 published author.$/;"	c
 of	inc/extras.php	/^	\/\/ Adds a class of hfeed to non-singular pages.$/;"	c
 options	modules/social/sociallinks.php	/^		$this->options = get_option( 'social_option_name' );$/;"	v
@@ -334,6 +342,7 @@ page	functions.php	/^	$page = new Custom_Post_Type('Page');$/;"	v
 page_init	modules/social/sociallinks.php	/^	public function page_init(){$/;"	f
 page_templates	modules/leads/leads.php	/^            $page_templates = wp_get_theme()->get_page_templates( $post );$/;"	v
 part	inc/minifier.php	/^				$part = t($part, $q); \/\/ trim quote(s)$/;"	v
+permissions	page-test.php	/^$permissions = ['email']; \/\/ Optional permissions$/;"	v
 photo_id	modules/events/events.php	/^	    $photo_id = get_post_thumbnail_id( $eventid );$/;"	v
 photo_id	modules/photogallery/photogallery.php	/^		$photo_id = get_post_thumbnail_id( $photoid );$/;"	v
 photogallery	modules/photogallery/photogallery.php	/^	$photogallery = get_posts( $request );$/;"	v
@@ -541,6 +550,7 @@ to	inc/cpt.php	/^     * Helper function to get an object variable.$/;"	f
 to	inc/cpt.php	/^     * User function to define which taxonomy filters to display on the admin page.$/;"	f
 to	inc/honeypot.php	/^ * N.B. It is not necessary to implement this class to use the Akismet class.$/;"	c
 to_ping	modules/leads/leads.php	/^        $to_ping = isset( $postarr['to_ping'] ) ? sanitize_trackback_urls( $postarr['to_ping'] ) : '';$/;"	v
+tokenMetadata	page-callback.php	/^$tokenMetadata = $oAuth2Client->debugToken($accessToken);$/;"	v
 truncate	modules/events/events.php	/^	function truncate($text, $chars = 25) {$/;"	f
 twitter_callback	modules/social/sociallinks.php	/^	public function twitter_callback(){$/;"	f
 type	modules/leads/leads.php	/^            $type = $emaildata['fileinfo']['filetype'];$/;"	v
