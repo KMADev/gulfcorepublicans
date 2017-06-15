@@ -8,6 +8,7 @@ html, body.full, body.full #page { height:100%; }
 #bot-bot {
     background-color:#04417C;
     overflow: hidden;
+    padding-bottom: 1rem;
 }
 #bot {
     background-color:#04417C;
@@ -15,7 +16,7 @@ html, body.full, body.full #page { height:100%; }
 }
 @media screen and (min-width: 768px){
     #bot {
-        padding: 0;
+        padding: 2rem 0 0;
     }
 }
 
@@ -179,6 +180,40 @@ ul li.menu-item a:hover {
     color:#999;
 }
 
+#main-menu li:hover a.nav-link {
+    background: #04417C;
+    display: block;
+    color: #FFF;
+}
+
+#main-menu li:hover .dropdown-menu {
+    display: block;
+    min-width: 11rem;
+    padding: .5rem 0;
+    margin: 0;
+    color: #FFF;
+    background-color: #04417C;
+    border: none;
+    border-radius: 0;
+}
+
+#main-menu li:hover .dropdown-menu li {
+    display: block;
+}
+#main-menu li:hover .dropdown-menu li.menu-item a.nav-link {
+    padding:.5rem 1rem;
+}
+
+#main-menu li:hover .dropdown-menu li.menu-item a.nav-link:hover {
+    background-color: #2367BC;
+}
+
+#main-menu .dropdown-menu a {
+    background: #04417C;
+    display: block;
+    color: #FFF;
+}
+
 #navbarNavDropdown {
     padding:0;
 }
@@ -208,15 +243,6 @@ ul li.menu-item.menu-item-291 a.nav-link {
 }
 
 /* Content */
-#mid {
-    background: #ececec;
-    border-top: 1px solid #FFFFFF;
-    border-bottom: 1px solid #FFFFFF;
-    box-shadow: 0 0 5px rgba(0,0,0,.3);
-    padding: 30px 0;
-    min-width: 440px;
-}
-
 #mid header {
     padding: 3rem 0 .5rem;
 }
@@ -225,3 +251,39 @@ ul li.menu-item.menu-item-291 a.nav-link {
     padding-bottom: 2rem;
 }
 
+#mid {
+    background: #ececec;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    padding: 30px 0 0;
+    min-width: 440px;
+}
+
+#mid .feat-boxes {
+    padding:30px 0;
+    background: #333333;
+}
+
+#mid .feat-boxes .container {
+    color:#FFF;
+    padding:.5rem 1rem 1rem;
+}
+
+#mid .feat-boxes h2 {
+    color:#FFF;
+    font-weight: 200;
+    margin-bottom: 2.5rem;
+}
+
+#stripe {
+    height: 60px;
+    background: url('/wp-content/themes/gcrp/img/star-pattern.png') center no-repeat #FFFFFF;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.3);
+    min-width: 440px;
+}
+
+@media screen and (min-width:993px){
+    .order-md-1 { order: 1; }
+    .order-md-2 { order: 2; }
+}

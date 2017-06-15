@@ -107,11 +107,49 @@ span.edit-link {
 #navbar-footer ul {
 	display: block;
 }
+#footer-menu .menu-item {
+	display: inline-block;
+	width:50%;
+}
 @media screen and (min-width: 768px) {
-	#navbar-footer ul {
-		display: flex;
+	#footer-menu #menu-item-263 {
+		float:left;
+		padding-bottom: 2rem;
 	}
 }
+
+div#bot ul#footer-menu li a {
+	color: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 3px 20px 3px 0;
+	line-height: 21px;
+	text-align: right;
+	display: block;
+}
+
+div#bot ul#footer-menu>li.menu-item>a {
+	font-size: 16px;
+	background: url('/wp-content/themes/gcrp/img/arrow.png') center right no-repeat;
+}
+
+div#bot ul#footer-menu ul.sub-menu li.menu-item {
+	width:100%;
+}
+
+div#bot ul#footer-menu ul.sub-menu li.menu-item>a {
+	font-size: 14px;
+	text-transform: none;
+	background: none;
+}
+
+span.social-label {
+	color: #FFF;
+	vertical-align: middle;
+	display: inline-block;
+	text-transform: uppercase;
+}
+
 .copyright,
 .siteby {
 	color:rgba(255,255,255,.8);
@@ -135,10 +173,11 @@ span.edit-link {
 	max-width:60px;
 	display: inline-block;
 	line-height: 0;
-	/*margin:.25rem;*/
+	margin: .25rem;
+	vertical-align: middle;
 }
 .siteby svg {
-	max-width: 23px;
+	max-width: 20px;
 	margin-bottom: -.15rem;
 }
 

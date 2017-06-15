@@ -12,35 +12,45 @@
  * @package GCRP
  */
 
-get_header();
-if(!is_front_page()) {
-	?>
+get_header(); ?>
     <div class="container">
 
-        <div id="primary"
-                class="content-area">
-            <main id="main"
-                    class="site-main"
-                    role="main">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main" role="main">
 
-				<?php
-				while ( have_posts() ) : the_post();
+				<?php while ( have_posts() ) : the_post();
 
 					get_template_part( 'template-parts/content', 'page' );
 
-					// If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-
-				endwhile; // End of the loop.
-				?>
+				endwhile; ?>
 
             </main><!-- #main -->
         </div><!-- #primary -->
 
     </div>
-	<?php
-}
-//get_sidebar();
+    <div class="feat-boxes">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <div class="container news-container">
+                        <h2 class="text-center" >Follow us</h2>
+                        <?php include(locate_template('template-parts/facebook-news.php')); ?>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="container events-container">
+                        <h2 class="text-center" >Join us</h2>
+                        <?php include(locate_template('template-parts/facebook-events.php')); ?>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="container signup-container">
+                        <h2 class="text-center" >Sign up</h2>
+                        <?php include(locate_template('template-parts/newsletter-signup.php')); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
 get_footer();

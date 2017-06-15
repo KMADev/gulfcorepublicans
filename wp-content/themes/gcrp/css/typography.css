@@ -1,0 +1,16 @@
+body {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #292b2c;
+}
+h1 {
+    color: #C2121D;
+}
+h2 {
+    color: #04417C;
+}
+h3 {
+    color: #333;
+}
