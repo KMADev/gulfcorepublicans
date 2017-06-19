@@ -8,6 +8,8 @@ Akismet	inc/honeypot.php	/^class Akismet {$/;"	c
 AkismetRequestFactory	inc/honeypot.php	/^interface AkismetRequestFactory {$/;"	i
 AkismetRequestSender	inc/honeypot.php	/^interface AkismetRequestSender {$/;"	i
 Custom_Post_Type	inc/cpt.php	/^class Custom_Post_Type {$/;"	c
+FaceBookEvents	facebook/FaceBookEvents.php	/^class FaceBookEvents$/;"	c
+FacebookFeed	facebook/FacebookFeed.php	/^class FacebookFeed$/;"	c
 MINIFY_COMMENT_CSS	inc/minifier.php	/^define('MINIFY_COMMENT_CSS', '\/\\*[\\s\\S]*?\\*\/');$/;"	d
 MINIFY_COMMENT_HTML	inc/minifier.php	/^define('MINIFY_COMMENT_HTML', '<!\\-{2}[\\s\\S]*?\\-{2}>');$/;"	d
 MINIFY_COMMENT_JS	inc/minifier.php	/^define('MINIFY_COMMENT_JS', '\/\/[^\\n]*');$/;"	d
@@ -39,6 +41,8 @@ accepts	inc/cpt.php	/^     * @param  int     $accepted_args    The number of arg
 accepts	inc/cpt.php	/^     * @param integer $accepted_args The number of arguments the function accepts.$/;"	f
 accessToken	page-callback.php	/^        $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);$/;"	v
 accessToken	page-callback.php	/^    $accessToken = $helper->getAccessToken();$/;"	v
+access_token	facebook/FaceBookEvents.php	/^        $access_token = FACEBOOK_ACCESS_TOKEN;$/;"	v
+access_token	facebook/FacebookFeed.php	/^        $access_token  = FACEBOOK_ACCESS_TOKEN;$/;"	v
 addEvent	modules/events/events.js	/^function addEvent ( event_id, event_title, event_start, event_end, event_url ){$/;"	f
 addEventsToCal	modules/events/events.php	/^		    function addEventsToCal(){$/;"	f
 add_action	inc/cpt.php	/^    function add_action( $action, $function, $priority = 10, $accepted_args = 1 ) {$/;"	f
@@ -75,6 +79,7 @@ args	inc/cpt.php	/^		$args = array_merge($/;"	v
 args	inc/cpt.php	/^                    $args = array($/;"	v
 args	inc/cpt.php	/^    public function __construct( $name, $args = array(), $labels = array() ){$/;"	v
 args	inc/cpt.php	/^    public function add_taxonomy( $name, $args = array(), $labels = array() ){$/;"	v
+assemble_error_codes	template-parts/newsletter-signup.php	/^function assemble_error_codes($error_lists_string, $error_codes_string) {$/;"	f
 atom_callback	modules/social/sociallinks.php	/^	public function atom_callback(){$/;"	f
 attr	inc/bootstrap-wp-navwalker.php	/^			foreach ( $atts as $attr => $value ) {$/;"	v
 attributes	inc/bootstrap-wp-navwalker.php	/^			$attributes = '';$/;"	v
@@ -110,6 +115,9 @@ class_names	inc/bootstrap-wp-navwalker.php	/^			$class_names = $class_names ? ' 
 class_names	inc/bootstrap-wp-navwalker.php	/^			$class_names = $value = '';$/;"	v
 class_names	inc/bootstrap-wp-navwalker.php	/^			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );$/;"	v
 classes	inc/bootstrap-wp-navwalker.php	/^			$classes     = empty( $item->classes ) ? array() : (array) $item->classes;$/;"	v
+client	facebook/FaceBookEvents.php	/^        $client = new Client([$/;"	v
+client	facebook/FacebookFeed.php	/^        $client = new Client([$/;"	v
+code	template-parts/newsletter-signup.php	/^		$code = ( isset($error_codes[$k]) ? (int)$error_codes[$k] : 0 );$/;"	v
 color_callback	modules/social/sociallinks.php	/^	public function color_callback(){$/;"	f
 column	inc/cpt.php	/^                            esc_url( add_query_arg( array( 'post_type' => $post->post_type, $column => $term->slug ), 'edit.php' ) ),$/;"	v
 column	inc/cpt.php	/^        foreach ( $this->sortable as $column => $values ) {$/;"	v
@@ -178,22 +186,30 @@ errorNumber	inc/honeypot.php	/^        $this->errorNumber = 0;$/;"	v
 errorNumber	inc/honeypot.php	/^    private $errorNumber;$/;"	v
 errorString	inc/honeypot.php	/^        $this->errorString = '';$/;"	v
 errorString	inc/honeypot.php	/^    private $errorString;$/;"	v
+error_codes	template-parts/newsletter-signup.php	/^	$error_codes = explode(',', $error_codes_string);$/;"	v
+error_lists	template-parts/newsletter-signup.php	/^	$error_lists = explode(',', $error_lists_string);$/;"	v
 event_content	modules/events/events.php	/^	    $event_content = $event->post_content;$/;"	v
 eventdata	modules/events/events.php	/^		$eventdata = '';$/;"	v
 eventdata	modules/events/events.php	/^	$eventdata = '';$/;"	v
 eventid	modules/events/events.php	/^    	$eventid = $event->ID;$/;"	v
 events	modules/events/events.php	/^	$events = get_posts( $request );$/;"	v
 events	modules/events/events.php	/^$events = new Custom_Post_Type($/;"	v
+events	page-test.php	/^$events = new FaceBookEvents();$/;"	v
 facebook_callback	modules/social/sociallinks.php	/^	public function facebook_callback(){$/;"	f
 fallback	inc/bootstrap-wp-navwalker.php	/^	public static function fallback( $args ) {$/;"	f
 fb	page-callback.php	/^$fb = new Facebook\\Facebook([$/;"	v
-fb	page-test.php	/^$fb = new Facebook\\Facebook([$/;"	v
 fb_output	inc/bootstrap-wp-navwalker.php	/^				$fb_output = '<' . $container;$/;"	v
 fb_output	inc/bootstrap-wp-navwalker.php	/^			$fb_output = null;$/;"	v
 featured	modules/testimonials/testimonials.php	/^		$featured = get_post_meta($testimonial_id,author_info_featured, true);$/;"	v
+feed	facebook/FaceBookEvents.php	/^        $feed = json_decode($response->getBody());$/;"	v
+feed	facebook/FacebookFeed.php	/^        $feed          = json_decode($response->getBody());$/;"	v
+feed	page-test.php	/^$feed    = new FacebookFeed();$/;"	v
+fetch	facebook/FaceBookEvents.php	/^    public function fetch($limit = 5)$/;"	f
+fetch	facebook/FacebookFeed.php	/^    public function fetch($limit = 5)$/;"	f
 field	modules/leads/leads.php	/^            foreach ( $postarr['meta_input'] as $field => $value ) {$/;"	v
 field_id_name	inc/cpt.php	/^									$field_id_name  = strtolower( str_replace( ' ', '_', $data['id'] ) ) . '_' . strtolower( str_replace( ' ', '_', $label ) );$/;"	v
 field_id_name	inc/cpt.php	/^                            $field_id_name = strtolower( str_replace( ' ', '_', $title ) ) . '_' . strtolower( str_replace( ' ', '_', $label ) );$/;"	v
+fields	facebook/FacebookFeed.php	/^        $fields        = 'id,message,picture,link,name,caption,description,created_time,updated_time';$/;"	v
 fields	inc/cpt.php	/^    public function add_meta_box($title, $fields = array(), $context = 'normal', $priority = 'default' ){$/;"	v
 filters	inc/cpt.php	/^	public $filters;$/;"	v
 filters	inc/cpt.php	/^                $filters = $this->filters;$/;"	v
@@ -240,7 +256,6 @@ guid	modules/leads/leads.php	/^        $guid = $postarr['guid'];$/;"	v
 header_text_color	inc/custom-header.php	/^	$header_text_color = get_header_textcolor();$/;"	v
 headers	modules/leads/leads.php	/^        $headers = 'From: ' . $sendadmin['from'] . $eol;$/;"	v
 helper	page-callback.php	/^$helper = $fb->getRedirectLoginHelper();$/;"	v
-helper	page-test.php	/^$helper = $fb->getRedirectLoginHelper();$/;"	v
 hooked	inc/cpt.php	/^     * @param  int     $priority         Order in which to execute the function, relation to other function hooked to this action.$/;"	f
 host	inc/minifier.php	/^$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : "");$/;"	v
 http_request	inc/honeypot.php	/^        $http_request  = "POST " . $path . " HTTP\/1.0\\r\\n";$/;"	v
@@ -270,6 +285,7 @@ isCommentSpam	inc/honeypot.php	/^    public function isCommentSpam() {$/;"	f
 isKeyValid	inc/honeypot.php	/^    public function isKeyValid() {$/;"	f
 item_output	inc/bootstrap-wp-navwalker.php	/^			$item_output = $args->before;$/;"	v
 jj	modules/leads/leads.php	/^        $jj = substr( $post_date, 8, 2 );$/;"	v
+k	template-parts/newsletter-signup.php	/^	foreach ( $error_lists as $k => $listid ) {$/;"	v
 key	inc/bootstrap-wp-navwalker.php	/^				$key         = array_search( 'fa', $classes );$/;"	v
 key	inc/cpt.php	/^                if( $key === $after ) {$/;"	v
 key	inc/cpt.php	/^            foreach( $columns as $key => $title ) {$/;"	v
@@ -284,14 +300,15 @@ labels	inc/cpt.php	/^		$labels = array_merge($/;"	v
 last	inc/cpt.php	/^		$last = $string[strlen( $string ) - 1];$/;"	v
 last	inc/cpt.php	/^		if( $last == 'y' ){$/;"	v
 leads	modules/leads/leads.php	/^$leads = new Custom_Post_Type($/;"	v
+legend	template-parts/newsletter-signup.php	/^	$legend = array ($/;"	v
 lightbox_to_footer	modules/photogallery/photogallery.php	/^function lightbox_to_footer() { ?>$/;"	f
 link	inc/cpt.php	/^                $link = esc_url( add_query_arg( array( 'post' => $post->ID, 'action' => 'edit' ), 'post.php' ) );$/;"	v
 link	modules/events/events.php	/^	    $link = get_permalink($eventid);$/;"	v
 link	modules/photogallery/photogallery.php	/^		$link = get_permalink($photoid);$/;"	v
 linkedin_callback	modules/social/sociallinks.php	/^	public function linkedin_callback(){$/;"	f
 linkedinlink	modules/team/team.php	/^		$linkedinlink = get_post_meta($member_id,'member_info_linkedin_link', true);$/;"	v
-loginUrl	page-test.php	/^$loginUrl = $helper->getLoginUrl('http:\/\/gulfcorepublicans.dev\/callback\/', $permissions);$/;"	v
 make_columns_sortable	inc/cpt.php	/^    function make_columns_sortable( $columns ) {$/;"	f
+map	template-parts/content-page.php	/^	            $map = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' );$/;"	v
 maybe_empty	modules/leads/leads.php	/^        $maybe_empty = 'attachment' !== $post_type$/;"	v
 mccall_theme_add_editor_styles	inc/editor.php	/^function mccall_theme_add_editor_styles() {$/;"	f
 mccall_tiny_mce_before_init	inc/editor.php	/^function mccall_tiny_mce_before_init( $settings ) {$/;"	f
@@ -300,6 +317,7 @@ member_id	modules/team/team.php	/^		$member_id = $member->ID;$/;"	v
 memberlist	modules/team/team.php	/^	$memberlist = get_posts( $request );$/;"	v
 menu_order	modules/leads/leads.php	/^            $menu_order = (int) $postarr['menu_order'];$/;"	v
 menu_order	modules/leads/leads.php	/^            $menu_order = 0;$/;"	v
+message	template-parts/newsletter-signup.php	/^	$message = "";$/;"	v
 meta	inc/cpt.php	/^							$meta = get_post_custom( $post->ID );$/;"	v
 meta	inc/cpt.php	/^                $meta = get_post_meta( $post->ID, $x );$/;"	v
 metaarray	modules/events/events.php	/^        $metaarray = array($/;"	v
@@ -339,10 +357,11 @@ output	modules/testimonials/testimonials.php	/^		$output = '';$/;"	v
 output	modules/testimonials/testimonials.php	/^		$output = '<p>category = '.$a['category'].'<\/p>';$/;"	v
 output	modules/testimonials/testimonials.php	/^	$output = '';$/;"	v
 page	functions.php	/^	$page = new Custom_Post_Type('Page');$/;"	v
+page_id	facebook/FaceBookEvents.php	/^        $page_id      = FACEBOOK_PAGE_ID;$/;"	v
+page_id	facebook/FacebookFeed.php	/^        $page_id       = FACEBOOK_PAGE_ID;$/;"	v
 page_init	modules/social/sociallinks.php	/^	public function page_init(){$/;"	f
 page_templates	modules/leads/leads.php	/^            $page_templates = wp_get_theme()->get_page_templates( $post );$/;"	v
 part	inc/minifier.php	/^				$part = t($part, $q); \/\/ trim quote(s)$/;"	v
-permissions	page-test.php	/^$permissions = ['email']; \/\/ Optional permissions$/;"	v
 photo_id	modules/events/events.php	/^	    $photo_id = get_post_thumbnail_id( $eventid );$/;"	v
 photo_id	modules/photogallery/photogallery.php	/^		$photo_id = get_post_thumbnail_id( $photoid );$/;"	v
 photogallery	modules/photogallery/photogallery.php	/^	$photogallery = get_posts( $request );$/;"	v
@@ -447,6 +466,8 @@ requestFactory	inc/honeypot.php	/^        $this->requestFactory = new SocketWrit
 requestFactory	inc/honeypot.php	/^    private $requestFactory;$/;"	v
 requestSender	inc/honeypot.php	/^        $requestSender = $this->requestFactory->createRequestSender();$/;"	v
 reserved	inc/cpt.php	/^        $reserved = array($/;"	v
+response	facebook/FaceBookEvents.php	/^        $response     = $client->request('GET', '\/' . $page_id . '\/events\/?limit=' . $limit . '&access_token=' . $access_token);$/;"	v
+response	facebook/FacebookFeed.php	/^        $response      = $client->request('GET', '\/' . $page_id . '\/feed\/?fields=' . $fields . '&limit=' . $limit . '&access_token=' . $access_token);$/;"	v
 response	inc/honeypot.php	/^        $response = $requestSender->send($host, $this->apiPort, $http_request);$/;"	v
 response	inc/honeypot.php	/^        $response = $this->sendRequest($this->getQueryString(), $this->wordPressAPIKey . '.rest.akismet.com', '\/' . $this->akismetVersion . '\/comment-check');$/;"	v
 response	inc/honeypot.php	/^        $response = $this->sendRequest('key=' . $this->wordPressAPIKey . '&blog=' . $this->blogURL, $this->akismetServer, '\/' . $this->akismetVersion . '\/verify-key');$/;"	v
@@ -455,6 +476,7 @@ response	inc/honeypot.php	/^    private $response;$/;"	v
 responseLength	inc/honeypot.php	/^    public function send($host, $port, $request, $responseLength = 1160) {$/;"	v
 responseLength	inc/honeypot.php	/^    public function send($host, $port, $request, $responseLength = 1160);$/;"	v
 result	modules/events/events.php	/^			$result = json_encode($result);$/;"	v
+results	page-test.php	/^$results = $feed->fetch(2);$/;"	v
 returns	inc/bootstrap-wp-navwalker.php	/^		 * comparison that is not case sensitive. The strcasecmp() function returns$/;"	f
 sanitize	modules/social/sociallinks.php	/^	public function sanitize( $input ){$/;"	f
 save	inc/cpt.php	/^    public function save(){$/;"	f
@@ -482,8 +504,8 @@ shortencaption	modules/photogallery/photogallery.php	/^function shortencaption($
 shorttext	modules/testimonials/testimonials.php	/^		$shorttext = get_post_meta($testimonial_id,author_info_short_version, true);$/;"	v
 size_callback	modules/social/sociallinks.php	/^	\/*public function size_callback(){$/;"	f
 socialArray	modules/social/sociallinks.php	/^	$socialArray = array();$/;"	v
-socialId	footer.php	/^                                foreach ( $socialLinks as $socialId => $socialLink ) {$/;"	v
-socialLinks	footer.php	/^                        <div class="social"><?php $socialLinks = getSocialLinks('svg','square');$/;"	v
+socialId	footer.php	/^				                foreach ( $socialLinks as $socialId => $socialLink ) {$/;"	v
+socialLinks	footer.php	/^                        <div class="social"><span class="social-label">Follow Us:<\/span> <?php $socialLinks = getSocialLinks('svg','square');$/;"	v
 social_settings_page	modules/social/sociallinks.php	/^	$social_settings_page = new SocialSettingsPage();$/;"	v
 someAjaxFunction	js/ajax.js	/^function someAjaxFunction ( variable ){$/;"	f
 something	modules/events/events.php	/^		$something = 'something in wordpress';$/;"	v
@@ -530,13 +552,16 @@ that	inc/cpt.php	/^     * Internal function that adds user defined sortable colu
 thumb	modules/events/events.php	/^	    $thumb = wp_get_attachment_image_src( $photo_id, 'medium');$/;"	v
 thumb	modules/photogallery/photogallery.php	/^		$thumb = wp_get_attachment_image_src( $photo_id, 'medium');$/;"	v
 thumb	modules/team/team.php	/^        $thumb = wp_get_attachment_image_src( $thumb_id, 'large');$/;"	v
+thumb	template-parts/blogfeed.php	/^            $thumb       = wp_get_attachment_image_src( $thumb_id, 'medium' );$/;"	v
 thumb_id	modules/team/team.php	/^        $thumb_id = get_post_thumbnail_id( $member_id );$/;"	v
+thumb_id	template-parts/blogfeed.php	/^            $thumb_id    = get_post_thumbnail_id( $post->ID );$/;"	v
 thumb_url	modules/team/team.php	/^        $thumb_url = $thumb[0];$/;"	v
+thumb_url	template-parts/blogfeed.php	/^            $thumb_url   = $thumb[0];$/;"	v
 thumbnail_id	modules/leads/leads.php	/^                $thumbnail_id = intval( $postarr['_thumbnail_id'] );$/;"	v
 thumbnail_support	modules/leads/leads.php	/^                    $thumbnail_support = post_type_supports( 'attachment:audio', 'thumbnail' ) || current_theme_supports( 'post-thumbnails', 'attachment:audio' );$/;"	v
 thumbnail_support	modules/leads/leads.php	/^                    $thumbnail_support = post_type_supports( 'attachment:video', 'thumbnail' ) || current_theme_supports( 'post-thumbnails', 'attachment:video' );$/;"	v
 thumbnail_support	modules/leads/leads.php	/^            $thumbnail_support = current_theme_supports( 'post-thumbnails', $post_type ) && post_type_supports( $post_type, 'thumbnail' ) || 'revision' === $post_type;$/;"	v
-time_string	inc/template-tags.php	/^		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s<\/time><time class="updated" datetime="%3$s">%4$s<\/time>';$/;"	v
+time_string	inc/template-tags.php	/^		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s<\/time>';$/;"	v
 time_string	inc/template-tags.php	/^	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s<\/time>';$/;"	v
 time_string	inc/template-tags.php	/^	$time_string = sprintf( $time_string,$/;"	v
 title	inc/cpt.php	/^					foreach( $custom_fields as $title => $fields ){$/;"	v

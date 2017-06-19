@@ -1,18 +1,35 @@
 <?php
-require('vendor/autoload.php');
+require('facebook/FacebookFeed.php');
+require('facebook/FaceBookEvents.php');
 get_header();
 
+/*
+ *   FEED
+ *    1. Pass any number as a parameter to the fetch() method and return that many results (up to 100). Default is 5
+ */
 
-$fb = new Facebook\Facebook([
-    'app_id' => '140487476513677',
-    'app_secret' => '8820f0a5297f4f9e82da69adfbc2686d',
-    'default_graph_version' => 'v2.9',
-]);
+$feed    = new FacebookFeed();
+$results = $feed->fetch(2);
 
-$helper = $fb->getRedirectLoginHelper();
+//display results
+echo '<ul>';
+foreach ($results->data as $result) {
+    echo '<li>' . $result->message . '</li>';
+}
+echo '</ul>';
 
-$permissions = ['email']; // Optional permissions
-$loginUrl = $helper->getLoginUrl('http://gulfcorepublicans.dev/callback/', $permissions);
+//get the link for next set of results
 
-echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
+echo '<a href="' . $results->paging->next . '" class="btn btn-primary">Next</a>';
+echo '<hr>';
+
+///////////////////////////////////////////////////////////
+
+/*
+ *  Events
+ */
+
+$events = new FaceBookEvents();
+echo '<pre>', print_r($events->fetch()), '</pre>';
+
 get_footer();
