@@ -9,12 +9,18 @@ get_header();
  */
 
 $feed    = new FacebookFeed();
-$results = $feed->fetch(2);
+$results = $feed->fetch(10);
 
 //display results
 echo '<ul>';
 foreach ($results->data as $result) {
+    if(isset($result->object_id)){
+        $photo = $feed->photo($result->object_id);
+    }else{
+        $photo = $result->picture;
+    }
     echo '<li>' . $result->message . '</li>';
+    echo '<img src="' . $photo .'">';
 }
 echo '</ul>';
 
@@ -29,7 +35,7 @@ echo '<hr>';
  *  Events
  */
 
-$events = new FaceBookEvents();
-echo '<pre>', print_r($events->fetch()), '</pre>';
-
+//$events = new FaceBookEvents();
+//echo '<pre>', print_r($events->fetch()), '</pre>';
+//
 get_footer();
