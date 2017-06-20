@@ -1,10 +1,5 @@
+<div class="col-md-8 text-center">
 <?php
-/**
- * Created by PhpStorm.
- * User: Bryan
- * Date: 6/15/2017
- * Time: 12:35 PM
- */
 
 function assemble_error_codes($error_lists_string, $error_codes_string) {
 	$legend = array (
@@ -54,18 +49,21 @@ function assemble_error_codes($error_lists_string, $error_codes_string) {
 if ( isset($_GET['lists']) && isset($_GET['codes']) ){
 	echo assemble_error_codes($_GET['lists'], $_GET['codes']);
 }else{ ?>
-	<p>Receive information about news, events, meetings and classes all in your inbox.</p>
+	<p>Sign up to receive information about news, events, meetings and classes by email.</p>
 <?php } ?>
-<form class="form" method="post" action="http://kmailer.kerigan.com/box.php">
-	<div class="form-group">
+</div>
+<div class="col-md-4 text-center">
+<form class="form form-inline" method="post" action="http://kmailer.kerigan.com/box.php">
+    <input type="hidden" name="field[]">
+    <input type="hidden" name="nlbox[]" value="66">
+    <input type="hidden" name="funcml" value="add">
+    <input type="hidden" name="p" value="1043">
+    <input type="hidden" name="_charset" value="utf-8">
+	<div class="input-group">
 		<input type="text" class="email-signup-field form-control" name="email" placeholder="Enter your email" >
-	</div>
-	<input type="hidden" name="field[]">
-	<input type="hidden" name="nlbox[]" value="66">
-	<input type="hidden" name="funcml" value="add">
-	<input type="hidden" name="p" value="1043">
-	<input type="hidden" name="_charset" value="utf-8">
-	<div class="form-group">
-		<input type="submit" class="btn btn-primary email-signup-button" value="Subscribe" >
+        <span class="input-group-btn">
+            <input type="submit" class="btn btn-primary email-signup-button" value="Subscribe" >
+        </span>
 	</div>
 </form>
+</div>

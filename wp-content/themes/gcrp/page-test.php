@@ -1,6 +1,6 @@
 <?php
-require('facebook/FacebookFeed.php');
-require('facebook/FaceBookEvents.php');
+require(wp_normalize_path(get_template_directory() . '/facebook/FacebookFeed.php'));
+require(wp_normalize_path(get_template_directory() . '/facebook/FaceBookEvents.php'));
 get_header();
 
 /*

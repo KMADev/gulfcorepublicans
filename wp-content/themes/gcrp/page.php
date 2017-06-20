@@ -30,25 +30,26 @@ get_header(); ?>
     </div>
     <div class="feat-boxes">
         <div class="container">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <div class="container news-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feat-container news-container">
                         <h2 class="text-center" >Follow us</h2>
                         <?php include(locate_template('template-parts/facebook-news.php')); ?>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="container events-container">
+                <div class="col-md-6">
+                    <div class="feat-container events-container">
                         <h2 class="text-center" >Join us</h2>
                         <?php include(locate_template('template-parts/facebook-events.php')); ?>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="container signup-container">
-                        <h2 class="text-center" >Sign up</h2>
-                        <?php include(locate_template('template-parts/newsletter-signup.php')); ?>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </div>
+    <div class="email-signup">
+        <div class="container">
+            <div class="row">
+                <?php include(locate_template('template-parts/newsletter-signup.php')); ?>
             </div>
         </div>
     </div>
