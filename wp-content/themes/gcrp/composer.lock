@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0ad8588e5c22970411502db03acd6f33",
     "content-hash": "35372c3bf9f1cd8850950a78e239cf20",
     "packages": [
         {
@@ -63,7 +62,7 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2017-04-20 14:15:02"
+            "time": "2017-04-20T14:15:02+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -125,7 +124,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-02-28 22:50:30"
+            "time": "2017-02-28T22:50:30+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -176,7 +175,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-12-20 10:07:11"
+            "time": "2016-12-20T10:07:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -241,7 +240,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20 17:10:46"
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "psr/http-message",
@@ -291,7 +290,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06 14:39:51"
+            "time": "2016-08-06T14:39:51+00:00"
         }
     ],
     "packages-dev": [],

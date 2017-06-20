@@ -1,16 +1,9 @@
 <?php
 /**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
  * @package GCRP
  */
+
+require(wp_normalize_path(get_template_directory() . '/facebook/FacebookFeed.php'));
 
 get_header(); ?>
 <div id="content" class="site-content support">
@@ -30,16 +23,42 @@ get_header(); ?>
             <div class="blog-container">
                 <div class="container wide">
                     <div class="row">
-                        <?php while ( have_posts() ) : the_post();
-                            get_template_part( 'template-parts/blogfeed', get_post_format() );
-                        endwhile; ?>
+	                    <?php
+                            $feed    = new FacebookFeed();
+                            $results = $feed->fetch(15);
+                            $now = time();
+
+	                    foreach ( $results->data as $result ) {
+		                    $trimmed = wp_trim_words( $result->message, $num_words = 26, '...' );
+		                    //echo '<pre>',print_r($result),'</pre>';
+		                    ?>
+
+                            <div class="col-sm-6 col-lg-4 text-center">
+                                <div class="blog-article">
+                                    <div class="blog-image">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <a href="<?php echo $result->link; ?>"><img src="<?php echo $result->picture; ?>" alt="<?php echo $result->caption; ?>" class="embed-responsive-item img-fluid border-bottom" ></a>
+                                        </div>
+                                    </div>
+
+                                    <header class="blog-header">
+                                        <div class="entry-meta">
+                                            <p class="time-posted">posted <?php echo human_time_diff($now,strtotime($result->created_time)); ?> ago</p>
+                                        </div><!-- .entry-meta -->
+                                    </header><!-- .entry-header -->
+                                    <p style="margin:0;"><?php echo $trimmed; ?></p>
+                                </div>
+                                <div class="blog-link">
+                                    <a href="<?php echo $result->link; ?>">Read more</a>
+                                </div><!-- .entry-content -->
+                            </div>
+
+		                    <?php } ?>
                     </div>
                 </div>
             </div>
 
-            <?php the_posts_navigation();
-
-        else :
+        <?php else :
             get_template_part( 'template-parts/content', 'none' );
         endif; ?>
     </main><!-- #main -->
