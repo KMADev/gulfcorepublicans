@@ -22,16 +22,14 @@ class FacebookFeed
         return $feed;
     }
 
-    public function photo($id)
+    public function photo($fbpost)
     {
         $client = new Client([
             'base_uri' => 'https://graph.facebook.com/v2.9'
         ]);
 
         $access_token = FACEBOOK_ACCESS_TOKEN;
-        $response     = $client->request('GET', '/' . $id . '/?fields=type,link&access_token=' . $access_token);
-        $fbpost       = json_decode($response->getBody());
-        if ($fbpost->type == 'link') {
+        if ($fbpost->type == 'link' || $fbpost->type == 'video') {
             $response  = $client->request('GET', '/?id=' . $fbpost->link . '&access_token=' . $access_token);
             $returned  = json_decode($response->getBody());
             $og_id     = $returned->og_object->id;
@@ -39,7 +37,7 @@ class FacebookFeed
             $returned  = json_decode($response->getBody());
             $photo_url = $returned->image[0]->url;
         } else {
-            $response  = $client->request('GET', '/' . $id . '/?fields=object_id&access_token=' . $access_token);
+            $response  = $client->request('GET', '/' . $fbpost->id . '/?fields=object_id&access_token=' . $access_token);
             $returned  = json_decode($response->getBody());
             $object_id = $returned->object_id;
             $photo_url = 'https://graph.facebook.com/v2.9/' . $object_id . '/picture?access_token=' . $access_token;

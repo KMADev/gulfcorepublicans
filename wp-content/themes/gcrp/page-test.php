@@ -14,7 +14,7 @@ $results = $feed->fetch(10);
 //display results
 echo '<ul>';
 foreach ($results->data as $result) {
-    $photo = $feed->photo($result->id);
+    $photo = $feed->photo($result);
     echo '<li>' . $result->message . '</li>';
     echo '<img src="' . $photo .'">';
 }
