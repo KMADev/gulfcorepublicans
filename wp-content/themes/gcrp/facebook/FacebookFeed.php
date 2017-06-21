@@ -18,21 +18,6 @@ class FacebookFeed
         $fields       = 'id,message,link,name,caption,description,created_time,updated_time,picture,object_id,type';
         $response     = $client->request('GET', '/' . $page_id . '/posts/?fields=' . $fields . '&limit=' . $limit . '&access_token=' . $access_token);
         $feed         = json_decode($response->getBody());
-//        foreach($feed->data as $fbpost){
-//            if($fbpost->type == 'link'){
-//                echo '<p>YEP</p>';
-//                $response = $client->request('GET', '/?id='. $fbpost->link .'&access_token='. $access_token);
-//                $returned = json_decode($response->getBody());
-//                $og_id = $returned->og_object->id;
-//                $response = $client->request('GET', '/'. $og_id .'/?fields=image&access_token='. $access_token);
-//                $returned = json_decode($response->getBody());
-//                $fbpost->picture = $returned->image[0]->url;
-//
-//
-//            }else{
-//                echo '<p>NOPE</p>';
-//            }
-//        }
 
         return $feed;
     }
