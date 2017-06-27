@@ -81,7 +81,7 @@
 					                    'theme_location'  => 'main-menu',
 					                    'container_class' => 'navbar d-flex ml-auto hidden-md-down',
 					                    'container_id'    => 'navbarNavDropdown',
-					                    'menu_class'      => 'navbar-nav ml-auto text-right',
+					                    'menu_class'      => 'navbar-nav ml-auto text-left',
 					                    'fallback_cb'     => '',
 					                    'menu_id'         => 'main-menu',
 					                    'walker'          => new WP_Bootstrap_Navwalker(),

@@ -239,10 +239,10 @@ ul li.menu-item.menu-item-291 a.nav-link {
 
 @media screen and (min-width:1200px){
     #navbarNavDropdown ul li.menu-item a.nav-link {
-        padding: .75rem 1.25rem;
+        padding: .75rem 1rem;
     }
     #navbarNavDropdown ul li.menu-item.menu-item-291 {
-        padding-left: 1.75rem;
+        float:right;
     }
 }
 
