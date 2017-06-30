@@ -27,7 +27,7 @@ if($start != $end){
 			<table class="fb-event-where light"><tr><td class="event-label">Where:</td><td><?php echo $result->place->name; ?></td></tr></table>
 			<p><?php echo $trimmed; ?></p>
 			<?php if(!$hasPassed){ ?>
-				<a class="btn btn-primary" href="<?php echo $result->link; ?>" >RSVP on Facebook</a>
+				<a class="btn btn-primary" href="<?php echo $result->link; ?>" target="_blank" >RSVP on Facebook</a>
 			<?php } ?>
 		</div>
 	</div>

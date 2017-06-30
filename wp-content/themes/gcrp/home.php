@@ -38,7 +38,7 @@ get_header(); ?>
                                     <div class="blog-article">
                                         <div class="blog-image">
                                             <div class="embed-responsive embed-responsive-16by9">
-                                                <a href="<?php echo $result->link; ?>"><img
+                                                <a href="<?php echo $result->link; ?>" target="_blank" ><img
                                                             src="<?php echo $photo_url; ?>"
                                                             alt="<?php echo $result->caption; ?>"
                                                             class="embed-responsive-item img-fluid border-bottom"></a>
@@ -55,7 +55,7 @@ get_header(); ?>
                                         <p style="margin:0;"><?php echo $trimmed; ?></p>
                                     </div>
                                     <div class="blog-link">
-                                        <a href="<?php echo $result->link; ?>">Read more</a>
+                                        <a href="<?php echo $result->link; ?>" target="_blank" >Read more</a>
                                     </div><!-- .entry-content -->
                                 </div>
 
