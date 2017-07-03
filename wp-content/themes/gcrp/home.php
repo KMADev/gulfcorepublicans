@@ -25,7 +25,7 @@ get_header(); ?>
                         <div class="row">
                             <?php
                             $feed    = new FacebookFeed();
-                            $results = $feed->fetch(2);
+                            $results = $feed->fetch(15);
                             $now     = time();
 
                             foreach ($results->data as $result) {
