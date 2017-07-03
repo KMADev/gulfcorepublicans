@@ -46,6 +46,7 @@ function gcrp_setup() {
 	require('inc/editor.php');
 	require('inc/minifier.php');
 	require('modules/social/sociallinks.php');
+	require('modules/photogallery/photogallery.php');
 
 	//add meta boxes to pages
 	$page = new Custom_Post_Type('Page');

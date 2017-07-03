@@ -28,7 +28,7 @@ $now = time();
         <div class="row">
             <div class="col-12">
                 <h4 class="fb-event-title"><a href="https://www.facebook.com/events/<?php echo $result->id;?>" target="_blank" ><?php echo $result->name;?></a></h4>
-                <p><?php echo $trimmed; ?> <a target="_blank" href="<?php echo $result->link; ?>" >read more</a></p>
+                <p><?php echo $trimmed; ?> <a target="_blank" href="https://www.facebook.com/events/<?php echo $result->id;?>" >read more</a></p>
                 <table class="fb-event-when"><tr><td class="event-label">When:</td><td><?php echo $range; ?></td></tr></table>
                 <table class="fb-event-where"><tr><td class="event-label">Where:</td><td><?php echo $result->place->name; ?></td></tr></table>
             </div>
