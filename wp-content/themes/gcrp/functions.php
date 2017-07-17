@@ -6,6 +6,7 @@
  *
  * @package GCRP
  */
+date_default_timezone_set('America/New_York');
 
 require('vendor/autoload.php');
 require('inc/session.php');
