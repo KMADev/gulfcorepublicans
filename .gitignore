@@ -1,8 +1,6 @@
 wp-config.php
-<<<<<<< HEAD
-.idea
-=======
 .idea/
 .DS_Store
->>>>>>> 56c81e0c67e3d5f65c2df3e571a7cdc26e8bdb1c
+error_log
+
 
