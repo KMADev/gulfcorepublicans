@@ -30,7 +30,7 @@ get_header(); ?>
 
                             foreach ($results->data as $result) {
                                 $trimmed = wp_trim_words($result->message, $num_words = 26, '...');
-                                $photo_url = $feed->photo($result)
+                                $photo_url = $feed->photo($result);
                                 //echo '<pre>',print_r($result),'</pre>';
                                 ?>
 

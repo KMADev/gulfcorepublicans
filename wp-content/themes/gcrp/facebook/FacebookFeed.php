@@ -32,6 +32,10 @@ class FacebookFeed
         if ($fbpost->type == 'link' || $fbpost->type == 'video') {
             $response  = $client->request('GET', '/?id=' . $fbpost->link . '&access_token=' . $access_token);
             $returned  = json_decode($response->getBody());
+            if(! isset($returned->og_object->id)){
+                $fbpost->type = 'foo'; //no og_object, so change type to skip this conditional
+                return $this->photo($fbpost);
+            }
             $og_id     = $returned->og_object->id;
             $response  = $client->request('GET', '/' . $og_id . '/?fields=image&access_token=' . $access_token);
             $returned  = json_decode($response->getBody());

@@ -189,3 +189,11 @@ Stack trace:
 #3 /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/vendor/guzzlehttp/guzzle/src/Client.php(129): GuzzleHttp\Client->requestAsync('GET', '//?fields=image...', Array)
 #4 /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/facebook/FacebookFeed.php(36): GuzzleHttp\Client->request('GET', '//?fields=image...')
 #5 /home/gulfcountyrepu in /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/vendor/guzzlehttp/psr7/src/Uri.php on line 71
+[17-Jul-2017 20:25:11 UTC] PHP Fatal error:  Uncaught InvalidArgumentException: Unable to parse URI: //?fields=image&access_token=140487476513677|a7ePEBZq4a8ZZz_g2rMxqtN2Dxk in /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/vendor/guzzlehttp/psr7/src/Uri.php:71
+Stack trace:
+#0 /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/vendor/guzzlehttp/psr7/src/functions.php(59): GuzzleHttp\Psr7\Uri->__construct('//?fields=image...')
+#1 /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/vendor/guzzlehttp/guzzle/src/Client.php(142): GuzzleHttp\Psr7\uri_for('//?fields=image...')
+#2 /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/vendor/guzzlehttp/guzzle/src/Client.php(115): GuzzleHttp\Client->buildUri('//?fields=image...', Array)
+#3 /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/vendor/guzzlehttp/guzzle/src/Client.php(129): GuzzleHttp\Client->requestAsync('GET', '//?fields=image...', Array)
+#4 /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/facebook/FacebookFeed.php(36): GuzzleHttp\Client->request('GET', '//?fields=image...')
+#5 /home/gulfcountyrepu in /home/gulfcountyrepubl/demo/wp-content/themes/gcrp/vendor/guzzlehttp/psr7/src/Uri.php on line 71
