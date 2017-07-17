@@ -11,7 +11,7 @@ $now = time();
 	<?php foreach ($results->data as $result) {
 		$trimmed = wp_trim_words( $result->description, $num_words = 17, '...' );
 		$start = strtotime($result->start_time);
-		$end = ($result->end_time != '' ? strtotime($result->end_time) : $start);gt git
+		$end = ($result->end_time != '' ? strtotime($result->end_time) : $start);
 
 		$rangedate = ($start != $end ? date('m/d/y',$start) .' - '. date('m/d/y',$end) : date('m/d/y',$start));
 		$rangetime = ($start != $end ? date('g:i A',$start) .' - '. date('g:i A',$end) : date('g:i A',$start));
