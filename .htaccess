@@ -1,0 +1,99 @@
+
+	<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	
+##Redirects	
+	RewriteCond %{HTTP_HOST} ^www.gcrp.kmastage.com [NC]
+	RewriteRule ^(.*)$ http://gulfcountyrepublicans.com/$1 [L,R=301]
+	
+	RewriteCond %{HTTP_HOST} ^gcrp.kmastage.com [NC]
+	RewriteRule ^(.*)$ http://gulfcountyrepublicans.com/$1 [L,R=301]
+	
+	RewriteCond %{HTTP_HOST} ^www.gulfcorepublicans.com [NC]
+	RewriteRule ^(.*)$ http://gulfcountyrepublicans.com/$1 [L,R=301]
+	
+	RewriteCond %{HTTP_HOST} ^gulfcorepublicans.com [NC]
+	RewriteRule ^(.*)$ http://gulfcountyrepublicans.com/$1 [L,R=301]
+	
+	RewriteCond %{HTTP_HOST} ^www.gulfcountyrepublicans.com [NC]
+	RewriteRule ^(.*)$ http://gulfcountyrepublicans.com/$1 [L,R=301]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	
+##Required for pretty URLs	
+	RewriteRule ^(.*)$ index.php/$1 [L]
+
+##For faster loading web pages	
+	Header set Connection keep-alive
+	</IfModule>
+	
+
+
+# BEGIN Brute Force Login Protection
+<Files "*">
+order deny,allow
+<Files "*">
+order deny,allow
+deny from 141.101.98.67
+</Files>
+deny from 141.101.105.254
+deny from 141.101.93.170
+deny from 141.101.81.119
+deny from 141.101.81.86
+deny from 108.162.230.65
+deny from 108.162.229.113
+deny from 173.245.49.98
+deny from 173.245.49.174
+deny from 199.27.133.243
+deny from 141.101.81.40
+deny from 108.162.254.242
+deny from 108.162.229.85
+deny from 108.162.229.46
+deny from 141.101.105.223
+deny from 108.162.212.69
+deny from 141.101.104.124
+deny from 198.41.243.121
+</Files>
+# END Brute Force Login Protection
+deny from 108.162.216.195
+deny from 173.245.56.76
+deny from 141.101.105.142
+deny from 141.101.88.133
+deny from 108.162.254.236
+deny from 141.101.105.56
+deny from 108.162.216.181
+deny from 173.245.48.112
+deny from 173.245.52.238
+deny from 108.162.212.78
+deny from 141.101.105.93
+deny from 141.101.99.117
+deny from 108.162.216.200
+deny from 141.101.89.139
+deny from 108.162.229.114
+deny from 141.101.99.137
+deny from 141.101.98.98
+deny from 141.101.105.37
+deny from 173.245.54.96
+deny from 141.101.98.67
+RewriteCond %{HTTP_HOST} ^gulfcorepublicans\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.gulfcorepublicans\.com$
+RewriteRule ^(.*)$ "http\:\/\/gulfcountyrepublicans\.com\/$1" [R=301,L]
+
+
+#SITEGUARD_PLUGIN_SETTINGS_START
+#SITEGUARD_PLUGIN_SETTINGS_END
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+

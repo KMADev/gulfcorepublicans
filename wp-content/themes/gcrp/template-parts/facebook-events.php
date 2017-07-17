@@ -11,11 +11,12 @@ $now = time();
 	<?php foreach ($results->data as $result) {
 		$trimmed = wp_trim_words( $result->description, $num_words = 17, '...' );
 		$start = strtotime($result->start_time);
-		$end = strtotime($result->end_time);
+		$end = ($result->end_time != '' ? strtotime($result->end_time) : $start);gt git
+
 		$rangedate = ($start != $end ? date('m/d/y',$start) .' - '. date('m/d/y',$end) : date('m/d/y',$start));
 		$rangetime = ($start != $end ? date('g:i A',$start) .' - '. date('g:i A',$end) : date('g:i A',$start));
 
-		$hasPassed = ($now > $end);
+		$hasPassed = (date('YmdGi',$now) > date('YmdGi',$end));
 
 		if($start != $end){
 		    $range = date('m/d/y @ g:i A',$start) .' - '. date('m/d/y @ g:i A',$end);

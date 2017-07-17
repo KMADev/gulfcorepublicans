@@ -11,19 +11,22 @@
  *
  * @package GCRP
  */
+date_default_timezone_set('America/New_York');
 require(wp_normalize_path(get_template_directory() . '/facebook/FaceBookEvents.php'));
 
 $events = new FaceBookEvents();
 $results = $events->fetch(30);
 $now = time();
+//echo date('YmdGi',$now);
 
 $pastevents = array();
 $upcomingevents = array();
 
 foreach ($results->data as $result) {
 	$start = strtotime($result->start_time);
-	$end = strtotime($result->end_time);
-	$hasPassed = ($now > $end);
+	$end = ($result->end_time != '' ? strtotime($result->end_time) : $start);
+	$hasPassed = (date('YmdGi',$now) > date('YmdGi',$end));
+//	echo '<pre>'.date('YmdGi',$start).' - '.date('YmdGi',$end).'</pre>';
 
 	if($hasPassed){
 		$pastevents[] = $result;
