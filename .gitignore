@@ -2,5 +2,9 @@ wp-config.php
 .idea/
 .DS_Store
 error_log
+robots.txt
+tags
+*cache/
+
 
 
