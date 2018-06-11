@@ -1,4 +1,7 @@
 <?php
+
+use Includes\Modules\Facebook\FacebookSettings;
+
 /**
  * The template for displaying all pages
  *
@@ -12,17 +15,14 @@
  * @package GCRP
  */
 date_default_timezone_set('America/New_York');
-require(wp_normalize_path(get_template_directory() . '/facebook/FaceBookEvents.php'));
-
-$events = new FaceBookEvents();
-$results = $events->fetch(30);
+$facebook = new FacebookSettings();
+$results = $facebook->getEvents(10);
 $now = time();
-//echo date('YmdGi',$now);
 
 $pastevents = array();
 $upcomingevents = array();
 
-foreach ($results->data as $result) {
+foreach ($results->posts as $result) {
 	$start = strtotime($result->start_time);
 	$end = ($result->end_time != '' ? strtotime($result->end_time) : $start);
 	$hasPassed = (date('YmdGi',$now) > date('YmdGi',$end));

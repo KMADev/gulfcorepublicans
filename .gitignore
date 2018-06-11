@@ -5,6 +5,4 @@ error_log
 robots.txt
 tags
 *cache/
-
-
-
+wp-content/plugins/*

@@ -4,9 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit125674c4d66184ca02fa9fc3c9ae8d61
+class ComposerStaticInit3d8e03b51ed969424762073d30122ca7
 {
     public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
@@ -14,9 +15,22 @@ class ComposerStaticInit125674c4d66184ca02fa9fc3c9ae8d61
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\Translation\\' => 30,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
+        ),
+        'K' => 
+        array (
+            'KeriganSolutions\\FacebookFeed\\' => 30,
+        ),
+        'I' => 
+        array (
+            'Includes\\Modules\\' => 17,
         ),
         'G' => 
         array (
@@ -31,9 +45,25 @@ class ComposerStaticInit125674c4d66184ca02fa9fc3c9ae8d61
     );
 
     public static $prefixDirsPsr4 = array (
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\Translation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'KeriganSolutions\\FacebookFeed\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kerigansolutions/fb-autoblog-wp/src',
+        ),
+        'Includes\\Modules\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/inc/modules',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -53,11 +83,16 @@ class ComposerStaticInit125674c4d66184ca02fa9fc3c9ae8d61
         ),
     );
 
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit125674c4d66184ca02fa9fc3c9ae8d61::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit125674c4d66184ca02fa9fc3c9ae8d61::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3d8e03b51ed969424762073d30122ca7::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3d8e03b51ed969424762073d30122ca7::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInit3d8e03b51ed969424762073d30122ca7::$fallbackDirsPsr4;
 
         }, null, ClassLoader::class);
     }

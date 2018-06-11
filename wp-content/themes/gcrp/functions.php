@@ -8,8 +8,13 @@
  */
 date_default_timezone_set('America/New_York');
 
+use Includes\Modules\Facebook\FacebookSettings;
+
 require('vendor/autoload.php');
 require('inc/session.php');
+
+$facebookSettingsPage = new FacebookSettings();
+$facebookSettingsPage->setupPage();
 
 if ( ! function_exists( 'gcrp_setup' ) ) :
 /**

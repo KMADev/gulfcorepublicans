@@ -1,8 +1,11 @@
 {
-    "name": "daron/gcrp",
-    "description": "Gulf County Republicans",
-    "require": {
-        "facebook/graph-sdk": "^5.5",
-        "guzzlehttp/guzzle": "6.*"
+    "autoload":{
+        "psr-4":{
+            "Includes\\Modules\\": "inc/modules"
+        }
+      },
+      "require": {
+        "kerigansolutions/fb-autoblog-wp": "^0.22.0",
+        "facebook/graph-sdk": "^5.6"
     }
 }

@@ -1,14 +1,16 @@
 <?php
 
-require(wp_normalize_path(get_template_directory() . '/facebook/FaceBookEvents.php'));
+use Includes\Modules\Facebook\FacebookSettings;
 
-$events = new FaceBookEvents();
-$results = $events->fetch(2);
+$facebook = new FacebookSettings();
+$results = $facebook->getEvents(2);
 $now = time();
+
+//var_dump($results);
 
 ?>
 <div class="facebook-events">
-	<?php foreach ($results->data as $result) {
+	<?php foreach ($results->posts as $result) {
 		$trimmed = wp_trim_words( $result->description, $num_words = 17, '...' );
 		$start = strtotime($result->start_time);
 		$end = ($result->end_time != '' ? strtotime($result->end_time) : $start);
@@ -23,7 +25,7 @@ $now = time();
         } else {
 			$range = date('m/d/y @ g:i A',$start);
         }
-		?>
+    ?>
 
     <div class="facebook-events-item" id="<?php echo $result->id; ?>" >
         <div class="row">

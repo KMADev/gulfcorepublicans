@@ -1,9 +1,14 @@
 <?php
+
+use Includes\Modules\Facebook\FacebookSettings;
+
 /**
  * @package GCRP
  */
 
-require(wp_normalize_path(get_template_directory() . '/facebook/FacebookFeed.php'));
+$facebook = new FacebookSettings();
+$results = $facebook->getFeed(9);
+$now = time();
 
 get_header(); ?>
     <div id="content" class="site-content support">
@@ -24,13 +29,10 @@ get_header(); ?>
                     <div class="container wide">
                         <div class="row">
                             <?php
-                            $feed    = new FacebookFeed();
-                            $results = $feed->fetch(15);
-                            $now     = time();
 
-                            foreach ($results->data as $result) {
+                            foreach ($results->posts as $result) {
                                 $trimmed = wp_trim_words($result->message, $num_words = 26, '...');
-                                $photo_url = $feed->photo($result);
+                                $photo_url = isset($result->full_picture) ? $result->full_picture : null;
                                 //echo '<pre>',print_r($result),'</pre>';
                                 ?>
 
